@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#292315"/><stop offset=".55" stop-color="#0b0b0b"/><stop offset="1" stop-color="#3a2b13"/></linearGradient><linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8dda0"/><stop offset="1" stop-color="#b98425"/></linearGradient></defs>
+<rect width="800" height="1000" fill="url(#bg)"/>
+<circle cx="580" cy="290" r="150" fill="#edbd53" opacity=".08"/><circle cx="580" cy="290" r="105" fill="none" stroke="#edbd53" stroke-opacity=".35"/>
+<path d="M0 630 150 490 260 575 410 390 550 550 690 430 800 510V1000H0Z" fill="#171811"/>
+<path d="M0 700 160 590 310 680 490 520 660 660 800 580V1000H0Z" fill="#242016"/>
+<path d="M60 80h680v840H60z" fill="none" stroke="#edbd53" stroke-opacity=".65" stroke-width="2"/>
+<text x="400" y="145" text-anchor="middle" fill="#edbd53" font-family="Arial,sans-serif" font-size="18" letter-spacing="7">WORLD TOUR EXPO</text>
+<text x="400" y="245" text-anchor="middle" fill="#fffdf8" font-family="Georgia,serif" font-size="58">YOUR NEXT</text>
+<text x="400" y="315" text-anchor="middle" fill="url(#gold)" font-family="Georgia,serif" font-size="66" font-style="italic">ADVENTURE</text>
+<text x="400" y="360" text-anchor="middle" fill="#fffdf8" font-family="Arial,sans-serif" font-size="22" letter-spacing="5">STARTS HERE</text>
+<path d="M290 405h220" stroke="#edbd53" stroke-width="2"/>
+<text x="400" y="790" text-anchor="middle" fill="#edbd53" font-family="Arial,sans-serif" font-size="22" letter-spacing="3">SAMPLE FLYER</text>
+<text x="400" y="830" text-anchor="middle" fill="#c7c0b0" font-family="Arial,sans-serif" font-size="17">Replace this image with your real package flyer</text>
+<text x="400" y="870" text-anchor="middle" fill="#c7c0b0" font-family="Arial,sans-serif" font-size="16">Reliable International Travel Services</text>
+</svg>

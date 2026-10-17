@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="Browse and download digital travel flyers from Reliable International Travel Services at World Tour Expo.">
+  <title>World Tour Expo | Reliable International Travel Services</title>
+  <link rel="icon" href="images/logo.webp" type="image/svg+xml">
+  <link rel="preload" href="images/logo.webp" as="image" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to flyers</a>
+
+  <section class="splash" id="splash" aria-label="Welcome">
+    <div class="splash__glow" aria-hidden="true"></div>
+    <div class="splash__content">
+      <img class="brand-logo splash__logo" src="images/logo.webp" alt="Reliable International Travel Services logo">
+      <p class="eyebrow">Special Collab Event</p>
+      <span class="splash__divider" aria-hidden="true"></span>
+      <p class="splash__event">World Tour Expo</p>
+      <h1 class="splash__brand">Reliable International<br>Travel Services</h1>
+      <p class="splash__tagline">Your journey, our priority.</p>
+      <div class="loading-line" aria-hidden="true"><span></span></div>
+    </div>
+    <p class="splash__bottom">Explore. Discover. Go.</p>
+  </section>
+
+  <img class="background-logo" src="images/logo.webp" alt="logo" aria-hidden="true">
+
+  <div class="site-shell" id="site-shell">
+    <header class="site-header">
+      <a class="brand-lockup" href="#" aria-label="Reliable International Travel Services home">
+        <img class="brand-logo" src="images/logo.webp" alt="">
+        <span class="brand-lockup__text">Reliable International <strong>Travel Services</strong></span>
+      </a>
+      <span class="header-event"><span class="status-dot"></span> World Tour Expo</span>
+    </header>
+
+    <main id="main-content">
+      <section class="hero">
+        <div class="hero__copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> Special Collab Event</p>
+          <h1>Where will your<br><em>next journey</em> take you?</h1>
+          <p class="hero__description">Browse our featured travel flyers, find your next destination, and download the details to keep them close.</p>
+          <a class="hero__jump" href="#flyer-gallery">Explore featured flyers <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero__art" aria-hidden="true">
+          <div class="orbit orbit--one"></div><div class="orbit orbit--two"></div>
+          <div class="hero__sun"></div>
+          <div class="hero__plane">✈</div>
+          <div class="hero__stamp"><span>TRAVEL</span><strong>MORE</strong><span>WORRY LESS</span></div>
+          <div class="hero__coordinates">WORLD TOUR EXPO <span>•</span> 2026</div>
+        </div>
+      </section>
+
+      <section class="flyers-section" id="flyer-gallery">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Your next escape</p>
+            <h2>Featured <em>travel flyers</em></h2>
+            <p class="section-description">Tap any flyer to view it in full and download the original image.</p>
+          </div>
+          <span class="flyer-count" id="flyer-count">0 flyers</span>
+        </div>
+        <div class="filter-row" aria-label="Flyer filters">
+          <button class="filter-chip is-active" type="button" data-filter="all" aria-pressed="true">All flyers</button>
+          <button class="filter-chip" type="button" data-filter="Asia" aria-pressed="false">Asia</button>
+          <button class="filter-chip" type="button" data-filter="Europe" aria-pressed="false">Europe</button>
+          <button class="filter-chip" type="button" data-filter="Other" aria-pressed="false">Other destinations</button>
+        </div>
+        <div class="flyer-grid" id="flyer-grid" aria-live="polite"></div>
+        <div class="empty-state" id="empty-state" hidden>
+          <span class="empty-state__icon">✧</span>
+          <h3>Flyers coming soon</h3>
+          <p>Add your latest travel flyers to the flyer list in <code>js/script.js</code>.</p>
+        </div>
+      </section>
+    </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <img
+          class="brand-logo"
+          src="images/logo.webp"
+          alt="Reliable International Travel Services Logo"
+        />
+
+        <div class="footer-brand-info">
+          <h3>Reliable International</h3>
+          <span>Travel Services</span>
+          <p>Curated journeys. Reliable service. Memorable experiences.</p>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-contact">
+        <h4>Get in Touch</h4>
+
+        <a href="mailto:inquiry@reliabletravelph.com">
+          <span class="contact-icon">✉</span>
+          inquiry@reliabletravelph.com
+        </a>
+
+        <a href="mailto:reliabletravelinfo@gmail.com">
+          <span class="contact-icon">✉</span>
+          reliabletravelinfo@gmail.com
+        </a>
+
+        <a href="tel:+639085721338">
+          <span class="contact-icon">☎</span>
+          +63 908 572 1338
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <span class="footer-copyright">
+        © 2026 Reliable International Travel Services.
+        All rights reserved.
+      </span>
+
+      <span class="footer-mark">
+        WORLD TOUR EXPO <b>2026</b>
+      </span>
+    </div>
+  </footer>
+  </div>
+
+  <div class="modal" id="flyer-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+    <button class="modal__backdrop" type="button" data-close-modal aria-label="Close flyer preview"></button>
+    <div class="modal__panel" role="document">
+      <div class="modal__topbar">
+        <div class="modal__heading">
+          <p class="eyebrow">Flyer preview</p>
+          <h2 id="modal-title">Travel package</h2>
+        </div>
+        <button class="icon-button modal__close" type="button" data-close-modal aria-label="Close preview">×</button>
+      </div>
+      <div class="modal__image-wrap">
+        <img id="modal-image" src="" alt="" class="modal__image">
+        <div class="image-fallback" id="modal-fallback" hidden>Flyer image unavailable. Please check the image path in <code>js/script.js</code>.</div>
+      </div>
+      <div class="modal__bottom">
+        <p id="modal-description">View the details of this package.</p>
+        <a class="download-button" id="download-button" href="#" download>
+          <span aria-hidden="true">↓</span> Download original flyer
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

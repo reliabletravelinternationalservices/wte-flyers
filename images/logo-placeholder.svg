@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title">
+<title id="title">Temporary Reliable International Travel Services logo placeholder</title>
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8dda0"/><stop offset="1" stop-color="#b98425"/></linearGradient></defs>
+<circle cx="60" cy="60" r="54" fill="none" stroke="url(#g)" stroke-width="2"/>
+<circle cx="60" cy="60" r="45" fill="none" stroke="#edbd53" stroke-opacity=".35"/>
+<path d="M28 66 53 39 70 55 91 29 77 71 59 61 42 82Z" fill="url(#g)"/>
+<path d="M29 91h62" stroke="#edbd53" stroke-width="2" stroke-linecap="round"/>
+<text x="60" y="105" text-anchor="middle" font-family="Arial,sans-serif" font-size="6" letter-spacing="1.4" fill="#edbd53">RELIABLE TRAVEL</text>
+</svg>
