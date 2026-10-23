@@ -8,42 +8,132 @@
    Replace the sample objects below with your real flyer files.
    ========================================================= */
 
-const flyers = [
+   const flyers = [
   {
     id: 1,
-    title: "Japan Tour Package",
+    title: "5D4N TOKYO-OSAKA",
     destination: "Asia",
-    image: "images/sample-flyer.svg",
-    thumbnail: "images/sample-flyer.svg",
-    filename: "japan-tour-package.svg",
-    description: "Discover our Japan travel package. Replace this sample with your original flyer."
+    image: "images/flyers/5D4N-TOKYO-OSAKA.jpg",
+    thumbnail: "images/flyers/5D4N-TOKYO-OSAKA.jpg",
+    filename: "5D4N-TOKYO-OSAKA.jpg",
+    description: "Ill do this on my own.."
   },
   {
     id: 2,
-    title: "Vietnam Tour Package",
-    destination: "Asia",
-    image: "images/sample-flyer.svg",
-    thumbnail: "images/sample-flyer.svg",
-    filename: "vietnam-tour-package.svg",
-    description: "Explore Vietnam's beautiful cities and experiences. Replace this sample with your original flyer."
+    title: "7D6N TURKIYE",
+    destination: "Europe",
+    image: "images/flyers/7D6N-HK-IBER.jpg",
+    thumbnail: "images/flyers/7D6N-HK-IBER.jpg",
+    filename: "7D6N-HK-IBER.jpg",
+    description: "Ill do this on my own.."
   },
   {
     id: 3,
-    title: "European Getaway",
+    title: "9D8N FAIRYTALE EUROPE",
     destination: "Europe",
-    image: "images/sample-flyer.svg",
-    thumbnail: "images/sample-flyer.svg",
-    filename: "european-getaway.svg",
-    description: "A sample entry for your Europe packages. Add your actual dates, rates, and inclusions to the flyer image."
+    image: "images/flyers/9D8N-FAIRYTALE-EUROPE-R-US-TOUR.jpg",
+    thumbnail: "images/flyers/9D8N-FAIRYTALE-EUROPE-R-US-TOUR.jpg",
+    filename: "9D8N-FAIRYTALE-EUROPE-R-US-TOUR.jpg",
+    description: "Ill do this on my own.."
   },
   {
     id: 4,
-    title: "Island Escape",
-    destination: "Other",
-    image: "images/sample-flyer.svg",
-    thumbnail: "images/sample-flyer.svg",
-    filename: "island-escape.svg",
-    description: "A sample entry for domestic or other destination packages."
+    title: "10D9N CHRISTMAS TURKIYE TIMELESS",
+    destination: "Europe",
+    image: "images/flyers/10D9N-CHRISTMAS-TURKIYE-TIMELESS.jpg",
+    thumbnail: "images/flyers/10D9N-CHRISTMAS-TURKIYE-TIMELESS.jpg",
+    filename: "10D9N-CHRISTMAS-TURKIYE-TIMELESS.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 5,
+    title: "10D9N TURKIYE TIMELESS",
+    destination: "Europe",
+    image: "images/flyers/10D9N-TURKIYE-TIMELESS.jpg",
+    thumbnail: "images/flyers/10D9N-TURKIYE-TIMELESS.jpg",
+    filename: "10D9N-TURKIYE-TIMELESS.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 6,
+    title: "12D11N BALKAN PENINSULA",
+    destination: "Europe",
+    image: "images/flyers/12D11N-BALKAN-PENINSULA-R-US-TOUR.jpg",
+    thumbnail: "images/flyers/12D11N-BALKAN-PENINSULA-R-US-TOUR.jpg",
+    filename: "12D11N-BALKAN-PENINSULA-R-US-TOUR.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 7,
+    title: "15D14N EASTER EUROPE",
+    destination: "Europe",
+    image: "images/flyers/15D14N-EASTER-EUROPE-R-US-TOUR.jpg",
+    thumbnail: "images/flyers/15D14N-EASTER-EUROPE-R-US-TOUR.jpg",
+    filename: "15D14N-EASTER-EUROPE-R-US-TOUR.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 8,
+    title: "15D14N ROTARY IN SPAIN",
+    destination: "Europe",
+    image: "images/flyers/15D14N-ROTARY-IN-SPAIN-R-US-TOUR.jpg",
+    thumbnail: "images/flyers/15D14N-ROTARY-IN-SPAIN-R-US-TOUR.jpg",
+    filename: "15D14N-ROTARY-IN-SPAIN-R-US-TOUR.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 9,
+    title: "16D15N 10in1 EUROPE",
+    destination: "Europe",
+    image: "images/flyers/16D15N-10in1-EUROPE-R-US-TOUR.jpg",
+    thumbnail: "images/flyers/16D15N-10in1-EUROPE-R-US-TOUR.jpg",
+    filename: "16D15N-10in1-EUROPE-R-US-TOUR.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 10,
+    title: "17D16N BALKAN PENINSULA",
+    destination: "Europe",
+    image: "images/flyers/17D16N-BALKAN-PENINSULA-R-US-TOUR.jpg",
+    thumbnail: "images/flyers/17D16N-BALKAN-PENINSULA-R-US-TOUR.jpg",
+    filename: "17D16N-BALKAN-PENINSULA-R-US-TOUR.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 11,
+    title: "18D17N MARIAN PILGRIMAGE",
+    destination: "Europe",
+    image: "images/flyers/18D17N-MARIAN-PILGRIMAGE-R-US-TOUR.jpg",
+    thumbnail: "images/flyers/18D17N-MARIAN-PILGRIMAGE-R-US-TOUR.jpg",
+    filename: "18D17N-MARIAN-PILGRIMAGE-R-US-TOUR.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 12,
+    title: "KOREA AUTUMN",
+    destination: "Asia",
+    image: "images/flyers/KOREA-AUTUMN.jpg",
+    thumbnail: "images/flyers/KOREA-AUTUMN.jpg",
+    filename: "KOREA-AUTUMN.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 13,
+    title: "KOREA SPRING",
+    destination: "Asia",
+    image: "images/flyers/KOREA-SPRING.jpg",
+    thumbnail: "images/flyers/KOREA-SPRING.jpg",
+    filename: "KOREA-SPRING.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 14,
+    title: "KOREA WINTER",
+    destination: "Asia",
+    image: "images/flyers/KOREA-WINTER.jpg",
+    thumbnail: "images/flyers/KOREA-WINTER.jpg",
+    filename: "KOREA-WINTER.jpg",
+    description: "Ill do this on my own.."
   }
 ];
 
