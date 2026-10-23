@@ -58,8 +58,11 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
 .section-description { margin: 0; color: var(--muted); line-height: 1.7; font-size: .9rem; }
 .flyer-count { padding: 9px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--gold-light); font-size: .72rem; white-space: nowrap; }
 .filter-row { display: flex; flex-wrap: wrap; gap: 9px; margin: 28px 0 24px; }
-.filter-chip { padding: 9px 15px; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; background: transparent; color: #aaa69c; font-size: .78rem; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+.filter-chip { min-height: 40px; padding: 9px 15px; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; background: transparent; color: #aaa69c; font-size: .78rem; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
 .filter-chip:hover, .filter-chip.is-active { border-color: var(--gold); background: var(--gold); color: var(--black); }
+.filter-days { display: flex; align-items: center; gap: 10px; margin-left: auto; color: var(--muted); font-size: .82rem; font-weight: 600; }
+.filter-days select { min-width: 150px; min-height: 42px; padding: 0 36px 0 13px; border: 1px solid rgba(255,255,255,.16); border-radius: 10px; background: #171717; color: var(--white); font: inherit; cursor: pointer; }
+.filter-days select:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .flyer-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 23px; }
 .flyer-card { min-width: 0; overflow: hidden; border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius); background: linear-gradient(145deg, #171717, #101010); animation: card-in .55s both; transition: border-color .25s, transform .25s, box-shadow .25s; }
 .flyer-card:hover { transform: translateY(-5px); border-color: rgba(237,189,83,.5); box-shadow: 0 18px 45px rgba(0,0,0,.24); }
@@ -100,7 +103,9 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
 .modal__image-wrap { position: relative; display: grid; place-items: center; min-height: 150px; flex: 1; padding: 15px; overflow: hidden; background: #080808; touch-action: none; }
 .modal__image { display: block; max-width: 100%; max-height: calc(94dvh - 190px); width: auto; height: auto; object-fit: contain; transform-origin: center; user-select: none; -webkit-user-drag: none; }
 .modal__image.is-zoomed { cursor: grab; }
-.modal__image-wrap.is-zoomed .modal__image.is-zoomed { cursor: grabbing; }
+.modal__image.is-panning { cursor: grabbing; }
+.modal__image-wrap.is-zoomed { cursor: grab; }
+.modal__image { touch-action: none; }
 .zoom-button { position: absolute; bottom: 12px; left: 12px; z-index: 2; min-height: 40px; padding: 0 14px; border: 1px solid rgba(255,255,255,.28); border-radius: 999px; background: rgba(10,10,10,.88); color: var(--white); font-size: .82rem; font-weight: 700; cursor: pointer; }
 .zoom-button:hover { border-color: var(--gold); color: var(--gold-light); }
 .image-fallback { max-width: 450px; padding: 30px; color: var(--muted); text-align: center; line-height: 1.7; }
@@ -125,6 +130,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
   .flyer-card__body { padding: 13px 12px 14px; }
   .flyer-card__title { font-size: 1.08rem; }
   .flyer-card__description { font-size: .84rem; }
+  .filter-row { gap: 8px; }
 }
 @media (max-width: 540px) {
   .site-header { padding: 12px 17px; gap: 10px; }
@@ -139,6 +145,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
   .flyer-count { margin-top: 6px; padding: 7px 9px; font-size: .65rem; }
   .filter-row { gap: 7px; margin-top: 22px; }
   .filter-chip { padding: 8px 11px; font-size: .7rem; }
+  .filter-days { flex: 1 0 100%; align-items: stretch; flex-direction: column; gap: 7px; margin: 4px 0 0; font-size: .78rem; }
+  .filter-days select { width: 100%; min-height: 46px; }
   .flyer-grid { grid-template-columns: 1fr; gap: 17px; }
   .flyer-card { display: grid; grid-template-columns: minmax(105px, .72fr) 1fr; align-items: stretch; }
   .flyer-card__trigger { padding: 9px; }
@@ -535,6 +543,19 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
   .download-button { width: 100%; min-height: 48px; }
   .modal__image-wrap { padding: 8px; }
   .modal__image { max-height: calc(96dvh - 185px); }
+}
+@media (max-width: 380px) {
+  .header-event { display: none; }
+  .flyers-section { width: calc(100% - 28px); }
+  .section-heading { gap: 10px; }
+  .section-heading h2 { font-size: clamp(1.75rem, 8vw, 2.15rem); }
+  .flyer-card { display: block; }
+  .flyer-card__trigger { padding: 9px 9px 0; }
+  .flyer-card__image-wrap { height: auto; min-height: 0; aspect-ratio: 4 / 5; }
+  .flyer-card__body { padding: 14px; }
+  .flyer-card__title { font-size: 1.12rem; }
+  .flyer-card__description { font-size: .86rem; }
+  .flyer-card__actions { margin-top: 0; }
 }
 @media (max-width: 350px) {
   .header-event { display: none; }

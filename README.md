@@ -18,17 +18,20 @@ For best results with downloads and local image paths, deploy the folder to a st
 Edit the `flyers` array in `js/script.js`. Each object can contain:
 - `id`: unique identifier
 - `title`: flyer title shown in the gallery and modal
+- `duration`: trip duration in days as a number from 1 to 30, or `null` if the flyer does not specify it
 - `destination`: `Asia`, `Europe`, or `Other` (used by the filter chips)
 - `image`: original/high-resolution image path used for preview and download
 - `thumbnail`: optional smaller image path; if omitted, the original is used
 - `filename`: suggested download filename
 - `description`: optional short text shown in the gallery and modal; when omitted, a description is generated from the flyer title
+- The duration filter includes every option from 1 to 30 days and uses each flyer's explicit `duration` value.
 
 Example:
 ```js
 {
   id: 5,
   title: "South Korea Autumn Tour",
+  duration: 5,
   destination: "Asia",
   image: "images/korea-autumn-original.webp",
   thumbnail: "images/korea-autumn-thumb.webp",
@@ -48,6 +51,7 @@ The download button points to the original `image` path, not the thumbnail. Brow
 - The splash screen lasts approximately four seconds and respects reduced-motion preferences.
 - After the splash, the page opens directly to the full flyer gallery.
 - Flyer thumbnails use lazy loading.
-- In the preview, double-tap or double-click to toggle zoom, pinch with two fingers to zoom in or out, and drag a zoomed flyer to pan. The zoom button also toggles between zoomed and normal size.
+- In the preview, double-tap or double-click to toggle zoom, pinch with two fingers to zoom in or out, and drag a zoomed flyer with a finger or mouse to pan. The zoom button also toggles between zoomed and normal size.
+- Destination and duration filters can be combined, and the filters and flyer cards adapt to tablet and mobile widths.
 - The preview modal supports Escape, outside click, focus restoration, and background scroll locking.
 - The CSS imports Google Fonts; if offline operation is required, remove the `@import` line and use the fallback fonts.

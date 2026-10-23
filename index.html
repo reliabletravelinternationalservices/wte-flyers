@@ -45,7 +45,7 @@
           <div>
             <p class="eyebrow">Your next escape</p>
             <h2>Browse all travel flyers</h2>
-            <p class="section-description">Select a flyer to view and download it. Double-tap or pinch the image to zoom.</p>
+            <p class="section-description">Open a flyer to view it. Double-tap or pinch to zoom, then drag to explore the image.</p>
           </div>
           <span class="flyer-count" id="flyer-count">0 flyers</span>
         </div>
@@ -54,12 +54,18 @@
           <button class="filter-chip" type="button" data-filter="Asia" aria-pressed="false">Asia</button>
           <button class="filter-chip" type="button" data-filter="Europe" aria-pressed="false">Europe</button>
           <button class="filter-chip" type="button" data-filter="Other" aria-pressed="false">Other destinations</button>
+          <label class="filter-days" for="day-filter">
+            <span>Duration</span>
+            <select id="day-filter" aria-label="Filter flyers by duration">
+              <option value="all">All durations</option>
+            </select>
+          </label>
         </div>
         <div class="flyer-grid" id="flyer-grid" aria-live="polite"></div>
         <div class="empty-state" id="empty-state" hidden>
           <span class="empty-state__icon">✧</span>
-          <h3>Flyers coming soon</h3>
-          <p>Add your latest travel flyers to the flyer list in <code>js/script.js</code>.</p>
+          <h3>No matching flyers</h3>
+          <p>Try a different destination or duration.</p>
         </div>
       </section>
     </main>
@@ -127,8 +133,8 @@
         </div>
         <button class="icon-button modal__close" type="button" data-close-modal aria-label="Close preview">×</button>
       </div>
-      <div class="modal__image-wrap" id="modal-image-wrap" role="group" aria-label="Flyer image. Double-tap to zoom or pinch with two fingers.">
-        <img id="modal-image" src="" alt="" class="modal__image">
+      <div class="modal__image-wrap" id="modal-image-wrap" role="group" aria-label="Flyer image. Double-tap to zoom, pinch with two fingers, or drag to pan.">
+        <img id="modal-image" src="" alt="" class="modal__image" draggable="false">
         <div class="image-fallback" id="modal-fallback" hidden>Flyer image unavailable. Please check the image path in <code>js/script.js</code>.</div>
         <button class="zoom-button" id="zoom-toggle" type="button" aria-pressed="false" aria-label="Zoom in on flyer">Zoom in</button>
       </div>

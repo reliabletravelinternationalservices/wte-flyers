@@ -12,6 +12,7 @@
   {
     id: 1,
     title: "5D4N TOKYO-OSAKA",
+    duration: 5,
     destination: "Asia",
     image: "images/flyers/5D4N-TOKYO-OSAKA.jpg",
     thumbnail: "images/flyers/5D4N-TOKYO-OSAKA.jpg",
@@ -20,8 +21,9 @@
   },
   {
     id: 2,
-    title: "7D6N TURKIYE",
-    destination: "Europe",
+    title: "7D6N Christmas Hongkong",
+    duration: 7,
+    destination: "Asia",
     image: "images/flyers/7D6N-HK-IBER.jpg",
     thumbnail: "images/flyers/7D6N-HK-IBER.jpg",
     filename: "7D6N-HK-IBER.jpg",
@@ -30,6 +32,7 @@
   {
     id: 3,
     title: "9D8N FAIRYTALE EUROPE",
+    duration: 9,
     destination: "Europe",
     image: "images/flyers/9D8N-FAIRYTALE-EUROPE-R-US-TOUR.jpg",
     thumbnail: "images/flyers/9D8N-FAIRYTALE-EUROPE-R-US-TOUR.jpg",
@@ -39,6 +42,7 @@
   {
     id: 4,
     title: "10D9N CHRISTMAS TURKIYE TIMELESS",
+    duration: 10,
     destination: "Europe",
     image: "images/flyers/10D9N-CHRISTMAS-TURKIYE-TIMELESS.jpg",
     thumbnail: "images/flyers/10D9N-CHRISTMAS-TURKIYE-TIMELESS.jpg",
@@ -48,6 +52,7 @@
   {
     id: 5,
     title: "10D9N TURKIYE TIMELESS",
+    duration: 10,
     destination: "Europe",
     image: "images/flyers/10D9N-TURKIYE-TIMELESS.jpg",
     thumbnail: "images/flyers/10D9N-TURKIYE-TIMELESS.jpg",
@@ -57,6 +62,7 @@
   {
     id: 6,
     title: "12D11N BALKAN PENINSULA",
+    duration: 12,
     destination: "Europe",
     image: "images/flyers/12D11N-BALKAN-PENINSULA-R-US-TOUR.jpg",
     thumbnail: "images/flyers/12D11N-BALKAN-PENINSULA-R-US-TOUR.jpg",
@@ -66,6 +72,7 @@
   {
     id: 7,
     title: "15D14N EASTER EUROPE",
+    duration: 15,
     destination: "Europe",
     image: "images/flyers/15D14N-EASTER-EUROPE-R-US-TOUR.jpg",
     thumbnail: "images/flyers/15D14N-EASTER-EUROPE-R-US-TOUR.jpg",
@@ -75,6 +82,7 @@
   {
     id: 8,
     title: "15D14N ROTARY IN SPAIN",
+    duration: 15,
     destination: "Europe",
     image: "images/flyers/15D14N-ROTARY-IN-SPAIN-R-US-TOUR.jpg",
     thumbnail: "images/flyers/15D14N-ROTARY-IN-SPAIN-R-US-TOUR.jpg",
@@ -84,6 +92,7 @@
   {
     id: 9,
     title: "16D15N 10in1 EUROPE",
+    duration: 16,
     destination: "Europe",
     image: "images/flyers/16D15N-10in1-EUROPE-R-US-TOUR.jpg",
     thumbnail: "images/flyers/16D15N-10in1-EUROPE-R-US-TOUR.jpg",
@@ -93,6 +102,7 @@
   {
     id: 10,
     title: "17D16N BALKAN PENINSULA",
+    duration: 17,
     destination: "Europe",
     image: "images/flyers/17D16N-BALKAN-PENINSULA-R-US-TOUR.jpg",
     thumbnail: "images/flyers/17D16N-BALKAN-PENINSULA-R-US-TOUR.jpg",
@@ -102,6 +112,7 @@
   {
     id: 11,
     title: "18D17N MARIAN PILGRIMAGE",
+    duration: 18,
     destination: "Europe",
     image: "images/flyers/18D17N-MARIAN-PILGRIMAGE-R-US-TOUR.jpg",
     thumbnail: "images/flyers/18D17N-MARIAN-PILGRIMAGE-R-US-TOUR.jpg",
@@ -111,6 +122,7 @@
   {
     id: 12,
     title: "KOREA AUTUMN",
+    duration: null,
     destination: "Asia",
     image: "images/flyers/KOREA-AUTUMN.jpg",
     thumbnail: "images/flyers/KOREA-AUTUMN.jpg",
@@ -120,6 +132,7 @@
   {
     id: 13,
     title: "KOREA SPRING",
+    duration: null,
     destination: "Asia",
     image: "images/flyers/KOREA-SPRING.jpg",
     thumbnail: "images/flyers/KOREA-SPRING.jpg",
@@ -129,6 +142,7 @@
   {
     id: 14,
     title: "KOREA WINTER",
+    duration: null,
     destination: "Asia",
     image: "images/flyers/KOREA-WINTER.jpg",
     thumbnail: "images/flyers/KOREA-WINTER.jpg",
@@ -141,6 +155,7 @@ const splash = document.querySelector("#splash");
 const siteShell = document.querySelector("#site-shell");
 const flyerGrid = document.querySelector("#flyer-grid");
 const flyerCount = document.querySelector("#flyer-count");
+const dayFilter = document.querySelector("#day-filter");
 const emptyState = document.querySelector("#empty-state");
 const modal = document.querySelector("#flyer-modal");
 const modalImage = document.querySelector("#modal-image");
@@ -156,6 +171,7 @@ let activeFlyer = null;
 let previousFocus = null;
 let toastTimer = null;
 let currentFilter = "all";
+let currentDayFilter = "all";
 let zoomScale = 1;
 let zoomX = 0;
 let zoomY = 0;
@@ -187,9 +203,28 @@ function getFlyerDescription(flyer) {
   return `Explore the ${formatFlyerTitle(flyer.title)} tour. Open the flyer to view the itinerary and package details.`;
 }
 
+function getFlyerDuration(flyer) {
+  const duration = Number(flyer.duration);
+  return Number.isInteger(duration) && duration >= 1 && duration <= 30 ? duration : null;
+}
+
+function populateDayFilter() {
+  for (let days = 1; days <= 30; days += 1) {
+    const option = document.createElement("option");
+    option.value = String(days);
+    option.textContent = `${days} ${days === 1 ? "day" : "days"}`;
+    dayFilter.append(option);
+  }
+}
+
 function renderFlyers(filter = currentFilter) {
   currentFilter = filter;
-  const visibleFlyers = flyers.filter((flyer) => filter === "all" || normalizeDestination(flyer.destination) === filter);
+  const visibleFlyers = flyers.filter((flyer) => {
+    const matchesDestination = filter === "all" || normalizeDestination(flyer.destination) === filter;
+    const matchesDuration = currentDayFilter === "all" ||
+      getFlyerDuration(flyer) === Number(currentDayFilter);
+    return matchesDestination && matchesDuration;
+  });
   flyerCount.textContent = `${visibleFlyers.length} ${visibleFlyers.length === 1 ? "flyer" : "flyers"}`;
   emptyState.hidden = visibleFlyers.length !== 0;
   flyerGrid.hidden = visibleFlyers.length === 0;
@@ -243,6 +278,7 @@ function openFlyer(id, trigger) {
   resetFlyerZoom();
   modalFallback.hidden = true;
   modalImage.hidden = false;
+  zoomToggle.hidden = false;
   modalImage.src = flyer.image;
   downloadButton.href = flyer.image;
   downloadButton.download = flyer.filename || makeFilename(flyer.title);
@@ -313,7 +349,7 @@ function resetFlyerZoom() {
   activePointers.clear();
   gestureStart = null;
   modalImage.style.transform = "";
-  modalImage.classList.remove("is-zoomed");
+  modalImage.classList.remove("is-zoomed", "is-panning");
   modalImageWrap.classList.remove("is-zoomed");
   zoomToggle.textContent = "Zoom in";
   zoomToggle.setAttribute("aria-label", "Zoom in on flyer");
@@ -380,19 +416,25 @@ document.querySelectorAll(".filter-chip").forEach((button) => {
   });
 });
 
+dayFilter.addEventListener("change", () => {
+  currentDayFilter = dayFilter.value;
+  renderFlyers();
+});
+
 modal.addEventListener("click", (event) => {
   if (event.target.closest("[data-close-modal]")) closeModal();
 });
 
 modalImageWrap.addEventListener("pointerdown", (event) => {
-  if (!["touch", "pen"].includes(event.pointerType) || event.target === zoomToggle) return;
-  event.preventDefault();
+  if ((event.pointerType === "mouse" && event.button !== 0) ||
+      event.target.closest(".zoom-button")) return;
+  if (event.pointerType !== "mouse") event.preventDefault();
   modalImageWrap.setPointerCapture(event.pointerId);
   activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
 
   if (activePointers.size === 1) {
     const now = Date.now();
-    const isDoubleTap = lastTap && now - lastTap.time < 320 &&
+    const isDoubleTap = event.pointerType === "touch" && lastTap && now - lastTap.time < 320 &&
       distanceBetween(lastTap, { x: event.clientX, y: event.clientY }) < 32;
     if (isDoubleTap) {
       toggleFlyerZoom();
@@ -448,6 +490,7 @@ modalImageWrap.addEventListener("pointermove", (event) => {
     const deltaY = point.y - gestureStart.y;
     if (Math.abs(deltaX) > 6 || Math.abs(deltaY) > 6) gestureMoved = true;
     if (zoomScale > 1) {
+      modalImage.classList.add("is-panning");
       setFlyerZoom(zoomScale, gestureStart.zoomX + deltaX, gestureStart.zoomY + deltaY);
     }
   }
@@ -472,6 +515,7 @@ function finishFlyerPointer(event) {
     if (event.pointerType === "touch" && !gestureMoved && !suppressTap && !endedWithPinch) {
       lastTap = { ...point, time: Date.now() };
     }
+    modalImage.classList.remove("is-panning");
     gestureStart = null;
     gestureMoved = false;
     suppressTap = false;
@@ -506,6 +550,7 @@ downloadButton.addEventListener("click", () => {
 });
 
 // Initial page rendering
+populateDayFilter();
 renderFlyers();
 
 // Splash lasts about four seconds, but reduced-motion users get immediate access.
