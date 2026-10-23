@@ -40,28 +40,12 @@
     </header>
 
     <main id="main-content">
-      <section class="hero">
-        <div class="hero__copy">
-          <p class="eyebrow"><span class="eyebrow-line"></span> Special Collab Event</p>
-          <h1>Where will your<br><em>next journey</em> take you?</h1>
-          <p class="hero__description">Browse our featured travel flyers, find your next destination, and download the details to keep them close.</p>
-          <a class="hero__jump" href="#flyer-gallery">Explore featured flyers <span aria-hidden="true">↓</span></a>
-        </div>
-        <div class="hero__art" aria-hidden="true">
-          <div class="orbit orbit--one"></div><div class="orbit orbit--two"></div>
-          <div class="hero__sun"></div>
-          <div class="hero__plane">✈</div>
-          <div class="hero__stamp"><span>TRAVEL</span><strong>MORE</strong><span>WORRY LESS</span></div>
-          <div class="hero__coordinates">WORLD TOUR EXPO <span>•</span> 2026</div>
-        </div>
-      </section>
-
       <section class="flyers-section" id="flyer-gallery">
         <div class="section-heading">
           <div>
             <p class="eyebrow">Your next escape</p>
-            <h2>Featured <em>travel flyers</em></h2>
-            <p class="section-description">Tap any flyer to view it in full and download the original image.</p>
+            <h2>Browse all travel flyers</h2>
+            <p class="section-description">Select a flyer to view and download it. Double-tap or pinch the image to zoom.</p>
           </div>
           <span class="flyer-count" id="flyer-count">0 flyers</span>
         </div>
@@ -143,9 +127,10 @@
         </div>
         <button class="icon-button modal__close" type="button" data-close-modal aria-label="Close preview">×</button>
       </div>
-      <div class="modal__image-wrap">
+      <div class="modal__image-wrap" id="modal-image-wrap" role="group" aria-label="Flyer image. Double-tap to zoom or pinch with two fingers.">
         <img id="modal-image" src="" alt="" class="modal__image">
         <div class="image-fallback" id="modal-fallback" hidden>Flyer image unavailable. Please check the image path in <code>js/script.js</code>.</div>
+        <button class="zoom-button" id="zoom-toggle" type="button" aria-pressed="false" aria-label="Zoom in on flyer">Zoom in</button>
       </div>
       <div class="modal__bottom">
         <p id="modal-description">View the details of this package.</p>

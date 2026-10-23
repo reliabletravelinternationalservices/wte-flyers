@@ -144,9 +144,11 @@ const flyerCount = document.querySelector("#flyer-count");
 const emptyState = document.querySelector("#empty-state");
 const modal = document.querySelector("#flyer-modal");
 const modalImage = document.querySelector("#modal-image");
+const modalImageWrap = document.querySelector("#modal-image-wrap");
 const modalFallback = document.querySelector("#modal-fallback");
 const modalTitle = document.querySelector("#modal-title");
 const modalDescription = document.querySelector("#modal-description");
+const zoomToggle = document.querySelector("#zoom-toggle");
 const downloadButton = document.querySelector("#download-button");
 const toast = document.querySelector("#toast");
 
@@ -154,6 +156,14 @@ let activeFlyer = null;
 let previousFocus = null;
 let toastTimer = null;
 let currentFilter = "all";
+let zoomScale = 1;
+let zoomX = 0;
+let zoomY = 0;
+let lastTap = null;
+let suppressTap = false;
+let gestureMoved = false;
+const activePointers = new Map();
+let gestureStart = null;
 
 const escapeHTML = (value = "") => String(value).replace(/[&<>"']/g, (char) => ({
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
@@ -166,6 +176,17 @@ function normalizeDestination(destination = "") {
   return "Other";
 }
 
+function formatFlyerTitle(title = "Travel flyer") {
+  return String(title).toLowerCase()
+    .replace(/\b[a-z]/g, (letter) => letter.toUpperCase())
+    .replace(/\b\d+d\d+n\b/gi, (duration) => duration.toUpperCase());
+}
+
+function getFlyerDescription(flyer) {
+  if (flyer.description && flyer.description !== "Ill do this on my own..") return flyer.description;
+  return `Explore the ${formatFlyerTitle(flyer.title)} tour. Open the flyer to view the itinerary and package details.`;
+}
+
 function renderFlyers(filter = currentFilter) {
   currentFilter = filter;
   const visibleFlyers = flyers.filter((flyer) => filter === "all" || normalizeDestination(flyer.destination) === filter);
@@ -175,9 +196,9 @@ function renderFlyers(filter = currentFilter) {
 
   flyerGrid.innerHTML = visibleFlyers.map((flyer, index) => {
     const thumbnail = flyer.thumbnail || flyer.image;
-    const title = escapeHTML(flyer.title || "Travel flyer");
+    const title = escapeHTML(formatFlyerTitle(flyer.title));
     const destination = escapeHTML(flyer.destination || "Destination");
-    const description = escapeHTML(flyer.description || "Tap to view this travel flyer.");
+    const description = escapeHTML(getFlyerDescription(flyer));
     const safeThumb = escapeHTML(thumbnail || "");
     return `
       <article class="flyer-card" style="animation-delay:${Math.min(index * 70, 350)}ms">
@@ -216,9 +237,10 @@ function openFlyer(id, trigger) {
 
   activeFlyer = flyer;
   previousFocus = trigger || document.activeElement;
-  modalTitle.textContent = flyer.title || "Travel flyer";
-  modalDescription.textContent = flyer.description || "View the details of this package.";
-  modalImage.alt = `${flyer.title || "Travel"} original flyer`;
+  modalTitle.textContent = formatFlyerTitle(flyer.title);
+  modalDescription.textContent = getFlyerDescription(flyer);
+  modalImage.alt = `${formatFlyerTitle(flyer.title)} original flyer`;
+  resetFlyerZoom();
   modalFallback.hidden = true;
   modalImage.hidden = false;
   modalImage.src = flyer.image;
@@ -229,6 +251,11 @@ function openFlyer(id, trigger) {
   modalImage.onerror = () => {
     modalImage.hidden = true;
     modalFallback.hidden = false;
+    zoomToggle.hidden = true;
+  };
+  modalImage.onload = () => {
+    zoomToggle.hidden = false;
+    updateFlyerZoom();
   };
 
   modal.classList.add("is-open");
@@ -244,6 +271,65 @@ function closeModal() {
   document.body.classList.remove("modal-open");
   if (previousFocus && typeof previousFocus.focus === "function") previousFocus.focus();
   activeFlyer = null;
+  resetFlyerZoom();
+}
+
+function clampZoomPosition() {
+  const maxX = Math.max(0, (modalImage.offsetWidth * zoomScale - modalImageWrap.clientWidth) / 2);
+  const maxY = Math.max(0, (modalImage.offsetHeight * zoomScale - modalImageWrap.clientHeight) / 2);
+  zoomX = Math.max(-maxX, Math.min(maxX, zoomX));
+  zoomY = Math.max(-maxY, Math.min(maxY, zoomY));
+}
+
+function updateFlyerZoom() {
+  if (zoomScale === 1) {
+    zoomX = 0;
+    zoomY = 0;
+  } else {
+    clampZoomPosition();
+  }
+  modalImage.style.transform = `translate3d(${zoomX}px, ${zoomY}px, 0) scale(${zoomScale})`;
+  modalImage.classList.toggle("is-zoomed", zoomScale > 1);
+  modalImageWrap.classList.toggle("is-zoomed", zoomScale > 1);
+  zoomToggle.textContent = zoomScale > 1 ? "Zoom out" : "Zoom in";
+  zoomToggle.setAttribute("aria-label", zoomScale > 1 ? "Restore flyer to normal size" : "Zoom in on flyer");
+  zoomToggle.setAttribute("aria-pressed", String(zoomScale > 1));
+}
+
+function setFlyerZoom(scale, x = zoomX, y = zoomY) {
+  zoomScale = Math.max(1, Math.min(4, scale));
+  zoomX = x;
+  zoomY = y;
+  updateFlyerZoom();
+}
+
+function resetFlyerZoom() {
+  zoomScale = 1;
+  zoomX = 0;
+  zoomY = 0;
+  lastTap = null;
+  suppressTap = false;
+  gestureMoved = false;
+  activePointers.clear();
+  gestureStart = null;
+  modalImage.style.transform = "";
+  modalImage.classList.remove("is-zoomed");
+  modalImageWrap.classList.remove("is-zoomed");
+  zoomToggle.textContent = "Zoom in";
+  zoomToggle.setAttribute("aria-label", "Zoom in on flyer");
+  zoomToggle.setAttribute("aria-pressed", "false");
+}
+
+function distanceBetween(first, second) {
+  return Math.hypot(second.x - first.x, second.y - first.y);
+}
+
+function midpointBetween(first, second) {
+  return { x: (first.x + second.x) / 2, y: (first.y + second.y) / 2 };
+}
+
+function toggleFlyerZoom() {
+  setFlyerZoom(zoomScale > 1 ? 1 : 2.5, 0, 0);
 }
 
 function makeFilename(title = "travel-flyer") {
@@ -297,6 +383,108 @@ document.querySelectorAll(".filter-chip").forEach((button) => {
 modal.addEventListener("click", (event) => {
   if (event.target.closest("[data-close-modal]")) closeModal();
 });
+
+modalImageWrap.addEventListener("pointerdown", (event) => {
+  if (!["touch", "pen"].includes(event.pointerType) || event.target === zoomToggle) return;
+  event.preventDefault();
+  modalImageWrap.setPointerCapture(event.pointerId);
+  activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+  if (activePointers.size === 1) {
+    const now = Date.now();
+    const isDoubleTap = lastTap && now - lastTap.time < 320 &&
+      distanceBetween(lastTap, { x: event.clientX, y: event.clientY }) < 32;
+    if (isDoubleTap) {
+      toggleFlyerZoom();
+      lastTap = null;
+      suppressTap = true;
+    } else {
+      suppressTap = false;
+    }
+    gestureMoved = false;
+    gestureStart = {
+      type: "drag",
+      x: event.clientX,
+      y: event.clientY,
+      zoomX,
+      zoomY
+    };
+  } else if (activePointers.size === 2) {
+    lastTap = null;
+    suppressTap = true;
+    const [first, second] = [...activePointers.values()];
+    gestureStart = {
+      type: "pinch",
+      distance: distanceBetween(first, second),
+      midpoint: midpointBetween(first, second),
+      scale: zoomScale,
+      zoomX,
+      zoomY
+    };
+  }
+});
+
+modalImageWrap.addEventListener("pointermove", (event) => {
+  if (!activePointers.has(event.pointerId)) return;
+  activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+  if (activePointers.size === 2 && gestureStart?.type === "pinch") {
+    const [first, second] = [...activePointers.values()];
+    const midpoint = midpointBetween(first, second);
+    const distance = distanceBetween(first, second);
+    if (Math.abs(distance - gestureStart.distance) > 3 ||
+        distanceBetween(midpoint, gestureStart.midpoint) > 3) gestureMoved = true;
+    setFlyerZoom(
+      gestureStart.scale * (distance / Math.max(gestureStart.distance, 1)),
+      gestureStart.zoomX + midpoint.x - gestureStart.midpoint.x,
+      gestureStart.zoomY + midpoint.y - gestureStart.midpoint.y
+    );
+    return;
+  }
+
+  if (activePointers.size === 1 && gestureStart?.type === "drag") {
+    const point = activePointers.get(event.pointerId);
+    const deltaX = point.x - gestureStart.x;
+    const deltaY = point.y - gestureStart.y;
+    if (Math.abs(deltaX) > 6 || Math.abs(deltaY) > 6) gestureMoved = true;
+    if (zoomScale > 1) {
+      setFlyerZoom(zoomScale, gestureStart.zoomX + deltaX, gestureStart.zoomY + deltaY);
+    }
+  }
+});
+
+function finishFlyerPointer(event) {
+  if (!activePointers.has(event.pointerId)) return;
+  const endedWithPinch = gestureStart?.type === "pinch";
+  const point = activePointers.get(event.pointerId);
+  activePointers.delete(event.pointerId);
+
+  if (activePointers.size === 1 && endedWithPinch) {
+    const [remaining] = activePointers.values();
+    gestureStart = {
+      type: "drag",
+      x: remaining.x,
+      y: remaining.y,
+      zoomX,
+      zoomY
+    };
+  } else if (activePointers.size === 0) {
+    if (event.pointerType === "touch" && !gestureMoved && !suppressTap && !endedWithPinch) {
+      lastTap = { ...point, time: Date.now() };
+    }
+    gestureStart = null;
+    gestureMoved = false;
+    suppressTap = false;
+  }
+}
+
+modalImageWrap.addEventListener("pointerup", finishFlyerPointer);
+modalImageWrap.addEventListener("pointercancel", finishFlyerPointer);
+modalImageWrap.addEventListener("dblclick", (event) => {
+  event.preventDefault();
+  toggleFlyerZoom();
+});
+zoomToggle.addEventListener("click", toggleFlyerZoom);
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeModal();

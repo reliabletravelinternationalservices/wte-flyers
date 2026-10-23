@@ -22,7 +22,7 @@ Edit the `flyers` array in `js/script.js`. Each object can contain:
 - `image`: original/high-resolution image path used for preview and download
 - `thumbnail`: optional smaller image path; if omitted, the original is used
 - `filename`: suggested download filename
-- `description`: short text shown in the gallery and modal
+- `description`: optional short text shown in the gallery and modal; when omitted, a description is generated from the flyer title
 
 Example:
 ```js
@@ -46,6 +46,8 @@ The download button points to the original `image` path, not the thumbnail. Brow
 
 ## Notes
 - The splash screen lasts approximately four seconds and respects reduced-motion preferences.
+- After the splash, the page opens directly to the full flyer gallery.
 - Flyer thumbnails use lazy loading.
+- In the preview, double-tap or double-click to toggle zoom, pinch with two fingers to zoom in or out, and drag a zoomed flyer to pan. The zoom button also toggles between zoomed and normal size.
 - The preview modal supports Escape, outside click, focus restoration, and background scroll locking.
 - The CSS imports Google Fonts; if offline operation is required, remove the `@import` line and use the fallback fonts.
