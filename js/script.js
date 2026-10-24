@@ -11,7 +11,7 @@
    const flyers = [
   {
     id: 1,
-    title: "5D4N TOKYO-OSAKA",
+    title: "5D4N TOKYO-OSAKA JAPAN",
     duration: 5,
     destination: "Asia",
     image: "images/flyers/5D4N-TOKYO-OSAKA.jpg",
@@ -121,8 +121,8 @@
   },
   {
     id: 12,
-    title: "KOREA AUTUMN",
-    duration: null,
+    title: "5D4N KOREA AUTUMN",
+    duration: 5,
     destination: "Asia",
     image: "images/flyers/KOREA-AUTUMN.jpg",
     thumbnail: "images/flyers/KOREA-AUTUMN.jpg",
@@ -131,8 +131,8 @@
   },
   {
     id: 13,
-    title: "KOREA SPRING",
-    duration: null,
+    title: "5D4N KOREA SPRING",
+    duration: 5,
     destination: "Asia",
     image: "images/flyers/KOREA-SPRING.jpg",
     thumbnail: "images/flyers/KOREA-SPRING.jpg",
@@ -141,14 +141,227 @@
   },
   {
     id: 14,
-    title: "KOREA WINTER",
-    duration: null,
+    title: "5D4N KOREA WINTER",
+    duration: 5,
     destination: "Asia",
     image: "images/flyers/KOREA-WINTER.jpg",
     thumbnail: "images/flyers/KOREA-WINTER.jpg",
     filename: "KOREA-WINTER.jpg",
     description: "Ill do this on my own.."
-  }
+  },
+  {
+    id: 15,
+    title: "3D2N MALAYSIA",
+    duration: 3,
+    destination: "Asia",
+    image: "images/flyers/3D2N-MALAYSIA.jpg",
+    thumbnail: "images/flyers/3D2N-MALAYSIA.jpg",
+    filename: "3D2N Malaysia.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 16,
+    title: "3D3N HONGKONG FREE CITY",
+    duration: 3,
+    destination: "Asia",
+    image: "images/flyers/3D3N-HK-FREE-CITY.jpg",
+    thumbnail: "images/flyers/3D3N-HK-FREE-CITY.jpg",
+    filename: "3D2N Hongkong free city.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 17,
+    title: "3D3N HONGKONG FREE DISNEY",
+    duration: 3,
+    destination: "Asia",
+    image: "images/flyers/3D3N-HK-FREE-DISNEY.jpg",
+    thumbnail: "images/flyers/3D3N-HK-FREE-DISNEY.jpg",
+    filename: "3D3N Hongkong Disneyland.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 18,
+    title: "3D3N HONGKONG FREE OCEAN PARK",
+    duration: 3,
+    destination: "Asia",
+    image: "images/flyers/3D3N-HK-FREE-OP.jpg",
+    thumbnail: "images/flyers/3D3N-HK-FREE-OP.jpg",
+    filename: "3D2N Hongkong op.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 20,
+    title: "4D3N 4 CITIES HONGKONG",
+    duration: 4,
+    destination: "Asia",
+    image: "images/flyers/4D3N-4-CITIES-HK-GOLDEN-FUN.jpg",
+    thumbnail: "images/flyers/4D3N-4-CITIES-HK-GOLDEN-FUN.jpg",
+    filename: "4D3N 4 CITIES.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 19,
+    title: "3D3N SINGAPORE",
+    duration: 3,
+    destination: "Asia",
+    image: "images/flyers/3D3N-SINGAPORE.jpg",
+    thumbnail: "images/flyers/3D3N-SINGAPORE.jpg",
+    filename: "3D3N SINGAPORE.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 21,
+    title: "4D3N AMAZING THAILAND",
+    duration: 4,
+    destination: "Asia",
+    image: "images/flyers/4D3N-AMAZING-THAILAND-JUAN-WORLD.jpg",
+    thumbnail: "images/flyers/4D3N-AMAZING-THAILAND-JUAN-WORLD.jpg",
+    filename: "4D3N-AMAZING-THAILAND-JUAN-WORLD.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 23,
+    title: "4D3N AVATAR ZHANGJIAJIE CHINA",
+    duration: 4,
+    destination: "Asia",
+    image: "images/flyers/4D3N-AVATAR-ZHANGJIAJIE-CHINA-DREAM.jpg",
+    thumbnail: "images/flyers/4D3N-AVATAR-ZHANGJIAJIE-CHINA-DREAM.jpg",
+    filename: "4D3N-AVATAR-ZHANGJIAJIE-CHINA-DREAM.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 24,
+    title: "4D3N BUSAN WINTER",
+    duration: 4,
+    destination: "Asia",
+    image: "images/flyers/4D3N-BUSAN-WINTER-AIR-MAC.jpg",
+    thumbnail: "images/flyers/4D3N-BUSAN-WINTER-AIR-MAC.jpg",
+    filename: "4D3N-BUSAN-WINTER-AIR-MAC.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 25,
+    title: "4D3N DANANG BANA-HILLS HOI-AN RESTOUR",
+    duration: 4,
+    destination: "Asia",
+    image: "images/flyers/4D3N-DANANG-BANA-HILLS-HOI-AN-RESTOUR.jpg",
+    thumbnail: "images/flyers/4D3N-DANANG-BANA-HILLS-HOI-AN-RESTOUR.jpg",
+    filename: "4D3N-DANANG-BANA-HILLS-HOI-AN-RESTOUR.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 26,
+    title: "4D3N DANANG BANA-HILLS HOI-AN",
+    duration: 4,
+    destination: "Asia",
+    image: "images/flyers/4D3N-DANANG-BANA-HILLS-HOI-AN-PDA-PASAY.jpg",
+    thumbnail: "images/flyers/4D3N-DANANG-BANA-HILLS-HOI-AN-PDA-PASAY.jpg",
+    filename: "4D3N-DANANG-BANA-HILLS-HOI-AN-PDA-PASAY.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 27,
+    title: "4D3N HANOI + SAPA + FANSIPAN",
+    duration: 4,
+    destination: "Asia",
+    image: "images/flyers/4D3N-HANOI+SAPA+FANSIPAN-RESTOUR.jpg",
+    thumbnail: "images/flyers/4D3N-HANOI+SAPA+FANSIPAN-RESTOUR.jpg",
+    filename: "4D3N-HANOI+SAPA+FANSIPAN-RESTOUR.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 28,
+    title: "4D3N HONGKONG MACAU PACKAGE",
+    duration: 4,
+    destination: "Asia",
+    image: "images/flyers/4D3N-HONGKONG-MACAU-PACKAGE.jpg",
+    thumbnail: "images/flyers/4D3N-HONGKONG-MACAU-PACKAGE.jpg",
+    filename: "4D3N-HONGKONG-MACAU-PACKAGE.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 29,
+    title: "5D4N AVATAR FENGHUANG CHINA DREAM",
+    duration: 5,
+    destination: "Asia",
+    image: "images/flyers/5D4N-AVATAR-FENGHUANG-CHINA-DREAM.jpg",
+    thumbnail: "images/flyers/5D4N-AVATAR-FENGHUANG-CHINA-DREAM.jpg",
+    filename: "5D4N-AVATAR-FENGHUANG-CHINA-DREAM.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 30,
+    title: "5D3N HANGZHOU SHANGHAI CHINA DREAM",
+    duration: 5,
+    destination: "Asia",
+    image: "images/flyers/5D3N-HANGZHOU-SHANGHAI-CHINA-DREAM.jpg",
+    thumbnail: "images/flyers/5D3N-HANGZHOU-SHANGHAI-CHINA-DREAM.jpg",
+    filename: "5D3N-HANGZHOU-SHANGHAI-CHINA-DREAM.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 31,
+    title: "5D4N CHRISTMAS IN BEIJING",
+    duration: 4,
+    destination: "Asia",
+    image: "images/flyers/5D4N-CHRISTMAS-IN-BEIJING-GOLDEN-FUN.jpg",
+    thumbnail: "images/flyers/5D4N-CHRISTMAS-IN-BEIJING-GOLDEN-FUN.jpg",
+    filename: "5D3N-HANGZHOU-SHANGHAI-CHINA-DREAM.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 32,
+    title: "5D4N JEJU0 ISLAND 2026",
+    duration: 5,
+    destination: "Asia",
+    image: "images/flyers/5D4N-JEJU0-ISLAND-2026-RAKSO.jpg",
+    thumbnail: "images/flyers/5D4N-JEJU0-ISLAND-2026-RAKSO.jpg",
+    filename: "5D4N-JEJU0-ISLAND-2026-RAKSO.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 33,
+    title: "5D4N-KOREA-SUMMER",
+    duration: 5,
+    destination: "Asia",
+    image: "images/flyers/5D4N-KOREA-SUMMER.jpg",
+    thumbnail: "images/flyers/5D4N-KOREA-SUMMER.jpg",
+    filename: "5D4N-KOREA-SUMMER.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 34,
+    title: "5D4N SHANGHAI CHRISTMAS",
+    duration: 5,
+    destination: "Asia",
+    image: "images/flyers/5D4N-SHANGHAI-CHRISTMAS-GOLDEN-FUN.jpg",
+    thumbnail: "images/flyers/5D4N-SHANGHAI-CHRISTMAS-GOLDEN-FUN.jpg",
+    filename: "5D4N-SHANGHAI-CHRISTMAS-GOLDEN-FUN.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 35,
+    title: "5D4N SHANGHAI DISNEYLAND MINI KYOT",
+    duration: 5,
+    destination: "Asia",
+    image: "images/flyers/5D4N-SHANGHAI-DISNEYLAND-MINI-KYOT-GOLDEN-FUN.jpg",
+    thumbnail: "images/flyers/5D4N-SHANGHAI-DISNEYLAND-MINI-KYOT-GOLDEN-FUN.jpg",
+    filename: "5D4N-SHANGHAI-DISNEYLAND-MINI-KYOT-GOLDEN-FUN.jpg",
+    description: "Ill do this on my own.."
+  },
+  {
+    id: 22,
+    title: "5D4N TOKYO JAPAN",
+    duration: 5,
+    destination: "Asia",
+    image: "images/flyers/5D4N-TOKYO-JAPAN.jpg",
+    thumbnail: "images/flyers/5D4N-TOKYO-JAPAN.jpg",
+    filename: "5D4N-TOKYO-JAPAN.jpg",
+    description: "Ill do this on my own.."
+  },
+
+  
+  
 ];
 
 const splash = document.querySelector("#splash");
